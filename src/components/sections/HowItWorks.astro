@@ -1,0 +1,70 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+
+const steps = [
+  {
+    title: "Planning",
+    description: "Shape the product direction, technical path, and delivery order from founder input."
+  },
+  {
+    title: "Building",
+    description: "Turn scoped work into tested application code with clear implementation decisions."
+  },
+  {
+    title: "Deploying",
+    description: "Prepare the app for static output, hosting, environment configuration, and release checks."
+  },
+  {
+    title: "Operating",
+    description: "Keep the codebase ready for iteration with ownership, reviewability, and handoff clarity."
+  }
+] as const;
+
+const differentiators = [
+  {
+    title: "GitHub-native",
+    description: "Work lands through branches, pull requests, and reviewable commits in your repository."
+  },
+  {
+    title: "Code ownership",
+    description: "You keep the source, history, and deployment path instead of being locked into a hidden platform."
+  }
+] as const;
+---
+
+<Section id="how-it-works" tone="muted" spacing="lg">
+  <Container width="xl">
+    <div class="max-w-3xl">
+      <p class="m-0 text-sm font-semibold uppercase text-brand">How it works</p>
+      <h2 class="mt-4 text-4xl font-semibold text-ink sm:text-5xl">
+        A practical path through the full software lifecycle.
+      </h2>
+    </div>
+
+    <ol class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {
+        steps.map((step, index) => (
+          <li class="rounded-md border border-border bg-surface p-6 shadow-soft">
+            <div class="flex size-10 items-center justify-center rounded-md bg-brand-soft text-sm font-semibold text-brand-strong">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+            <h3 class="mt-5 text-2xl font-semibold text-ink">{step.title}</h3>
+            <p class="mt-3 text-base text-ink-muted">{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-6 grid gap-4 lg:grid-cols-2">
+      {
+        differentiators.map((item) => (
+          <article class="rounded-md border border-border bg-surface p-6">
+            <h3 class="text-2xl font-semibold text-ink">{item.title}</h3>
+            <p class="mt-3 text-base text-ink-muted">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Container>
+</Section>
