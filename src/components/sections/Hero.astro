@@ -11,14 +11,14 @@ const ctaLabel = "Start a conversation";
 <Section id="hero" spacing="none" class="overflow-hidden">
   <Container width="xl" class="grid min-h-[calc(100vh-5rem)] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20">
     <div class="max-w-3xl">
-      <h1 class="text-5xl font-semibold text-balance text-ink sm:text-6xl lg:text-7xl">
+      <h1 class="text-4xl font-semibold text-balance text-ink sm:text-6xl lg:text-7xl">
         {siteName}
       </h1>
-      <p class="mt-6 max-w-2xl text-xl text-ink-muted sm:text-2xl">
+      <p class="mt-6 max-w-2xl text-lg text-ink-muted sm:text-2xl">
         {siteDescription}
       </p>
       <div class="mt-8">
-        <Button href={contactHref} size="lg">
+        <Button href={contactHref} size="lg" class="w-full sm:w-auto">
           {ctaLabel}
         </Button>
       </div>
@@ -26,7 +26,7 @@ const ctaLabel = "Start a conversation";
 
     <div class="relative">
       <img
-        class="aspect-[16/10] w-full rounded-lg border border-border object-cover shadow-soft"
+        class="aspect-[16/10] w-full rounded-md border border-border object-cover object-[72%_center] shadow-soft sm:rounded-lg lg:object-center"
         src={heroImage}
         width="1672"
         height="941"
