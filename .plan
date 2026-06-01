@@ -1,0 +1,59 @@
+# Architecture Plan
+
+## Product Context
+
+Build a static Astro landing page for the product described in the issues. Product-facing copy must come from the issues and, if later added, `PRODUCT.md`. Current required hero copy is:
+
+- Headline: "Agent Team for Founders"
+- Subhead: "You just talk, we handle the rest"
+
+## Module Structure
+
+- `astro.config.mjs`: static Astro output configuration.
+- `src/pages/index.astro`: landing page route assembled from section components.
+- `src/layouts/BaseLayout.astro`: document shell, SEO metadata, Open Graph metadata, favicon, viewport, and shared page frame.
+- `src/components/ui/Button.astro`: reusable CTA/link button variants.
+- `src/components/ui/Container.astro`: width and responsive padding primitive.
+- `src/components/ui/Section.astro`: vertical rhythm and section semantics primitive.
+- `src/components/Header.astro` and `src/components/Footer.astro`: site chrome, brand mark/nav, contact link, copyright, optional socials.
+- `src/components/sections/Hero.astro`: headline, subhead, and primary CTA.
+- `src/components/sections/ValueProposition.astro`: concise SDLC value statement emphasizing production-ready software and full code ownership.
+- `src/components/sections/HowItWorks.astro`: planning, building, deploying, operating, plus GitHub-native and code-ownership differentiators.
+- `src/components/sections/CtaBand.astro`: closing tagline and `mailto:` contact action.
+- `src/styles/global.css`: Tailwind layers, base styles, and reusable global rules.
+- `src/config/site.ts`: shared site metadata, env-derived URLs, contact email, nav links, CTA labels, and SEO defaults.
+- `.env.example`: `PUBLIC_CONTACT_EMAIL` and `PUBLIC_SITE_URL`.
+- `README.md`: install, dev, build, and preview instructions.
+
+## Shared Types and Data
+
+- Keep content/config in plain typed objects in `src/config/site.ts`.
+- Export TypeScript types for nav links, CTA links, SEO metadata, and feature/step cards only if more than one component consumes them.
+- Use `import.meta.env.PUBLIC_CONTACT_EMAIL` and `import.meta.env.PUBLIC_SITE_URL` for public runtime configuration.
+- Prefer Astro props for component APIs and keep components static unless interactivity is explicitly introduced later.
+
+## Issue Dependencies
+
+1. Issue #1 initializes Astro, TypeScript, static output, and base folders.
+2. Issues #2 and #3 depend on #1: Tailwind/design tokens, global styles, env example, and docs.
+3. Issue #4 depends on #1 and can use config from #3 when available.
+4. Issue #5 depends on #2 and establishes UI primitives used by layout and sections.
+5. Issue #6 depends on #5 and env/config from #3 for contact/navigation.
+6. Issues #7 through #10 depend on shared primitives and config/content:
+   - #7 hero after Tailwind/primitives.
+   - #8 value proposition after config/content.
+   - #9 how-it-works/features after config/content.
+   - #10 CTA band after button/link primitives.
+7. Issue #11 assembles layout, header/footer, and all sections into `src/pages/index.astro`.
+8. Issues #12 and #13 are quality passes after the page is assembled.
+9. Issue #14 runs final build, local static smoke test, link checks, and mailto verification.
+
+## Key Design Decisions
+
+- Use Astro static output for a fast, deployable marketing page with minimal JavaScript.
+- Use Tailwind tokens for colors, typography, spacing, radii, shadows, and focus states so later sections stay visually consistent.
+- Centralize public site metadata and contact details to avoid drift between layout, header, footer, CTA, and SEO tags.
+- Keep UI primitives small and composable instead of adding a broad component framework.
+- Preserve semantic HTML with ordered headings, landmarks, accessible names, focus-visible styles, and WCAG AA contrast from the start.
+- Treat responsive behavior as component-level responsibility first, then perform a dedicated cross-browser pass after assembly.
+- Build verification should include `npm run build`, static preview of `dist/`, key route smoke checks, and validation of internal links plus `mailto:` links.
