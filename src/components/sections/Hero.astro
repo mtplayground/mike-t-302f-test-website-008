@@ -1,0 +1,39 @@
+---
+import { contactHref, siteDescription, siteName } from "../../config/site";
+import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+
+const heroImage = "/images/hero-workflow.png";
+const ctaLabel = "Start a conversation";
+---
+
+<Section as="main" spacing="none" class="overflow-hidden">
+  <Container width="xl" class="grid min-h-[calc(100vh-5rem)] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20">
+    <div class="max-w-3xl">
+      <h1 class="text-5xl font-semibold text-balance text-ink sm:text-6xl lg:text-7xl">
+        {siteName}
+      </h1>
+      <p class="mt-6 max-w-2xl text-xl text-ink-muted sm:text-2xl">
+        {siteDescription}
+      </p>
+      <div class="mt-8">
+        <Button href={contactHref} size="lg">
+          {ctaLabel}
+        </Button>
+      </div>
+    </div>
+
+    <div class="relative">
+      <img
+        class="aspect-[16/10] w-full rounded-lg border border-border object-cover shadow-soft"
+        src={heroImage}
+        width="1672"
+        height="941"
+        alt="Software delivery dashboard on a laptop in a modern workspace"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </Container>
+</Section>
