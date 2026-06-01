@@ -2,6 +2,9 @@ target/
 node_modules/
 .astro/
 dist/
+.env
+.env.*
+!.env.example
 .gh_token
 .claude/
 .database_url
