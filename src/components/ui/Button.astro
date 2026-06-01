@@ -1,0 +1,71 @@
+---
+type Variant = "primary" | "secondary" | "ghost";
+type Size = "sm" | "md" | "lg";
+type ButtonType = "button" | "submit" | "reset";
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  fullWidth?: boolean;
+  type?: ButtonType;
+  disabled?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  type = "button",
+  disabled = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Component = href ? "a" : "button";
+
+const baseClasses =
+  "inline-flex items-center justify-center rounded-md font-semibold no-underline transition duration-200 ease-out focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60";
+
+const variantClasses: Record<Variant, string> = {
+  primary: "bg-brand text-white shadow-soft hover:bg-brand-strong",
+  secondary: "border border-border bg-surface text-ink hover:border-brand hover:text-brand-strong",
+  ghost: "text-brand hover:bg-brand-soft hover:text-brand-strong"
+};
+
+const sizeClasses: Record<Size, string> = {
+  sm: "min-h-10 px-4 text-sm",
+  md: "min-h-11 px-5 text-base",
+  lg: "min-h-12 px-6 text-lg"
+};
+
+const elementProps = href
+  ? {
+      href: disabled ? undefined : href,
+      "aria-disabled": disabled ? "true" : undefined,
+      tabindex: disabled ? -1 : undefined,
+      ...rest
+    }
+  : {
+      type,
+      disabled,
+      ...rest
+    };
+---
+
+<Component
+  {...elementProps}
+  class:list={[
+    baseClasses,
+    variantClasses[variant],
+    sizeClasses[size],
+    fullWidth && "w-full",
+    disabled && href && "pointer-events-none",
+    className
+  ]}
+>
+  <slot />
+</Component>
