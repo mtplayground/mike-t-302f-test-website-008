@@ -1,0 +1,45 @@
+---
+type Tone = "default" | "muted" | "surface";
+type Spacing = "none" | "sm" | "md" | "lg";
+
+interface Props {
+  as?: "section" | "main" | "div" | "header" | "footer";
+  tone?: Tone;
+  spacing?: Spacing;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as = "section",
+  tone = "default",
+  spacing = "md",
+  class: className,
+  ...rest
+} = Astro.props;
+const Tag = as;
+
+const toneClasses: Record<Tone, string> = {
+  default: "bg-canvas",
+  muted: "bg-surface-muted",
+  surface: "bg-surface"
+};
+
+const spacingClasses: Record<Spacing, string> = {
+  none: "",
+  sm: "py-12 sm:py-16",
+  md: "py-16 sm:py-20 lg:py-24",
+  lg: "py-20 sm:py-28 lg:py-32"
+};
+---
+
+<Tag
+  {...rest}
+  class:list={[
+    toneClasses[tone],
+    spacingClasses[spacing],
+    className
+  ]}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,32 @@
+---
+type Width = "sm" | "md" | "lg" | "xl" | "full";
+
+interface Props {
+  as?: "div" | "main" | "section" | "header" | "footer";
+  width?: Width;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { as = "div", width = "lg", class: className, ...rest } = Astro.props;
+const Tag = as;
+
+const widthClasses: Record<Width, string> = {
+  sm: "max-w-3xl",
+  md: "max-w-5xl",
+  lg: "max-w-6xl",
+  xl: "max-w-7xl",
+  full: "max-w-none"
+};
+---
+
+<Tag
+  {...rest}
+  class:list={[
+    "mx-auto w-full px-6 sm:px-8",
+    widthClasses[width],
+    className
+  ]}
+>
+  <slot />
+</Tag>
