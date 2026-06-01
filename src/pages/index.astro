@@ -1,10 +1,11 @@
 ---
 import Container from "../components/ui/Container.astro";
 import Section from "../components/ui/Section.astro";
+import { siteDescription, siteName } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "Agent Team for Founders";
-const description = "You just talk, we handle the rest";
+const title = siteName;
+const description = siteDescription;
 ---
 
 <BaseLayout title={title} description={description}>
