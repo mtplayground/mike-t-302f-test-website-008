@@ -1,0 +1,34 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+---
+
+<Section id="value" tone="surface" spacing="lg">
+  <Container width="lg" class="grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+    <div>
+      <h2 class="max-w-2xl text-4xl font-semibold text-ink sm:text-5xl">
+        Production-ready software, owned by you.
+      </h2>
+    </div>
+
+    <div class="max-w-3xl">
+      <p class="m-0 text-xl text-ink-muted sm:text-2xl">
+        Move through the software development lifecycle with a build partner that turns founder direction into deployable code, clear delivery decisions, and a codebase that remains fully under your ownership.
+      </p>
+      <dl class="mt-8 grid gap-6 sm:grid-cols-2">
+        <div class="border-l-4 border-brand pl-5">
+          <dt class="font-semibold text-ink">Production-ready</dt>
+          <dd class="mt-2 text-ink-muted">
+            Implementation is shaped for real deployment, maintainability, and iteration.
+          </dd>
+        </div>
+        <div class="border-l-4 border-accent pl-5">
+          <dt class="font-semibold text-ink">Fully owned</dt>
+          <dd class="mt-2 text-ink-muted">
+            The finished software lives in your repository with no platform lock-in.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </Container>
+</Section>
