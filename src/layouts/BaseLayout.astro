@@ -1,4 +1,7 @@
 ---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { siteDescription, siteName } from "../config/site";
 import "../styles/global.css";
 
 interface Props {
@@ -11,7 +14,7 @@ interface Props {
 
 const {
   title,
-  description = "You just talk, we handle the rest",
+  description = siteDescription,
   canonicalPath = "/",
   image,
   type = "website"
@@ -35,7 +38,7 @@ const faviconPath = "/favicon.svg";
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={faviconPath} />
     <meta property="og:type" content={type} />
-    <meta property="og:site_name" content={title} />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -47,6 +50,8 @@ const faviconPath = "/favicon.svg";
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>

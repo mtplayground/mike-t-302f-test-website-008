@@ -1,0 +1,13 @@
+---
+import { contactEmail, contactHref, currentYear, siteName } from "../config/site";
+import Container from "./ui/Container.astro";
+---
+
+<footer class="border-t border-border bg-surface">
+  <Container class="flex flex-col gap-4 py-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+    <p class="m-0">&copy; {currentYear} {siteName}. All rights reserved.</p>
+    <a class="font-semibold no-underline text-brand hover:text-brand-strong" href={contactHref}>
+      {contactEmail}
+    </a>
+  </Container>
+</footer>
