@@ -7,6 +7,7 @@
     "dev": "astro dev --host 0.0.0.0 --port 8080",
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0 --port 8080",
+    "verify:static": "node scripts/verify-static.mjs",
     "astro": "astro"
   },
   "devDependencies": {
