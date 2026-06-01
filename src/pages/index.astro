@@ -1,6 +1,5 @@
 ---
-import Container from "../components/ui/Container.astro";
-import Section from "../components/ui/Section.astro";
+import Hero from "../components/sections/Hero.astro";
 import { siteDescription, siteName } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -9,14 +8,5 @@ const description = siteDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Section as="main" spacing="none" class="min-h-screen">
-    <Container width="md" class="flex min-h-screen flex-col items-start justify-center py-16">
-      <h1 class="max-w-3xl text-5xl font-semibold text-balance text-ink sm:text-6xl">
-        {title}
-      </h1>
-      <p class="mt-6 max-w-2xl text-xl text-ink-muted">
-        {description}
-      </p>
-    </Container>
-  </Section>
+  <Hero />
 </BaseLayout>
