@@ -4,7 +4,7 @@ import Button from "./ui/Button.astro";
 import Container from "./ui/Container.astro";
 ---
 
-<header class="border-b border-border bg-surface/90">
+<header class="border-b border-border bg-surface">
   <Container class="flex min-h-20 flex-wrap items-center justify-between gap-4 py-4">
     <a href="/" class="inline-flex min-w-0 items-center gap-3 no-underline" aria-label={`${siteName} home`}>
       <span class="flex size-10 items-center justify-center rounded-md bg-brand text-white shadow-soft" aria-hidden="true">
@@ -23,7 +23,7 @@ import Container from "./ui/Container.astro";
               {link.label}
             </Button>
           ) : (
-            <a class="rounded-md px-3 py-2 text-sm font-semibold no-underline text-ink-muted hover:text-brand-strong" href={link.href}>
+            <a class="rounded-md px-3 py-2 text-sm font-semibold no-underline text-ink-muted hover:text-brand-strong" href={link.href} aria-current={link.href === "/" ? "page" : undefined}>
               {link.label}
             </a>
           )

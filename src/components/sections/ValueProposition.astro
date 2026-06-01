@@ -3,10 +3,10 @@ import Container from "../ui/Container.astro";
 import Section from "../ui/Section.astro";
 ---
 
-<Section id="value" tone="surface" spacing="lg">
+<Section id="value" tone="surface" spacing="lg" aria-labelledby="value-title">
   <Container width="lg" class="grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-start">
     <div>
-      <h2 class="max-w-2xl text-3xl font-semibold text-ink sm:text-5xl">
+      <h2 id="value-title" class="max-w-2xl text-3xl font-semibold text-ink sm:text-5xl">
         Production-ready software, owned by you.
       </h2>
     </div>
