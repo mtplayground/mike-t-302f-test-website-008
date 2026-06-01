@@ -1,5 +1,6 @@
 ---
 import Hero from "../components/sections/Hero.astro";
+import ValueProposition from "../components/sections/ValueProposition.astro";
 import { siteDescription, siteName } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -9,4 +10,5 @@ const description = siteDescription;
 
 <BaseLayout title={title} description={description}>
   <Hero />
+  <ValueProposition />
 </BaseLayout>
