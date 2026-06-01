@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  type?: "website" | "article";
+}
+
+const {
+  title,
+  description = "You just talk, we handle the rest",
+  canonicalPath = "/",
+  image,
+  type = "website"
+} = Astro.props;
+
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL || "https://example.com").replace(/\/+$/, "");
+const canonicalUrl = new URL(canonicalPath, `${siteUrl}/`).toString();
+const imageUrl = image ? new URL(image, `${siteUrl}/`).toString() : undefined;
+const faviconPath = "/favicon.svg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f766e" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={faviconPath} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_US" />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

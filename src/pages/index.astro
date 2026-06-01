@@ -1,21 +1,17 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Agent Team for Founders";
+const description = "You just talk, we handle the rest";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Agent Team for Founders</title>
-  </head>
-  <body>
-    <main class="mx-auto flex min-h-screen max-w-5xl flex-col items-start justify-center px-6 py-16 sm:px-8">
-      <h1 class="max-w-3xl text-5xl font-semibold text-balance text-ink sm:text-6xl">
-        Agent Team for Founders
-      </h1>
-      <p class="mt-6 max-w-2xl text-xl text-ink-muted">
-        You just talk, we handle the rest
-      </p>
-    </main>
-  </body>
-</html>
+<BaseLayout title={title} description={description}>
+  <main class="mx-auto flex min-h-screen max-w-5xl flex-col items-start justify-center px-6 py-16 sm:px-8">
+    <h1 class="max-w-3xl text-5xl font-semibold text-balance text-ink sm:text-6xl">
+      {title}
+    </h1>
+    <p class="mt-6 max-w-2xl text-xl text-ink-muted">
+      {description}
+    </p>
+  </main>
+</BaseLayout>
